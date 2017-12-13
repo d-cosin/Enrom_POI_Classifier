@@ -1,7 +1,6 @@
 #!/usr/bin/python
 
 import os
-os.system('say "your program begun"')
 import sys
 import pickle
 import warnings
@@ -545,7 +544,7 @@ features_removed = [
     "loan_advances", "director_fees",
     "total_stock_value", "deferred_income", "deferral_payments"
     ]
-features_list = extract_df_features(df_train, features_removed)
+features_list_fs2 = extract_df_features(df_train, features_removed)
 
 metrics_svc_optimized_fs2, clf_svc_optmized_fs2 = tune_hyper_parameters(
     clf, param_distr, my_dataset, features_list, "randomized search"
@@ -588,7 +587,7 @@ i += 1
 ### that the version of poi_id.py that you submit can be run on its own and
 ### generates the necessary .pkl files for validating your results.
 # SVC with feature set 2 was the best classifier obtained
-dump_classifier_and_data(clf_svc_optmized_fs2, my_dataset, features_list)
+dump_classifier_and_data(clf_svc_optmized_fs2, my_dataset, features_list_fs2)
 
 plt.show()
 
