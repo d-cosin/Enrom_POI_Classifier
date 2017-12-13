@@ -6,7 +6,7 @@
 
 The [Enron scandal](https://en.wikipedia.org/wiki/Enron_scandal) is one of the most significant corruption episodes in the United States of American history. Enron's senior executives such as [Jeffrey Skilling](https://en.wikipedia.org/wiki/Jeffrey_Skilling) and [Kennet Lay](https://en.wikipedia.org/wiki/Kenneth_Lay) were systematically involved in illegal schemes aiming to greedily improve profits and power over different sectors in the North American society. These illegal acts ultimately led to the bankruptcy of the [Enron Corporation](https://en.wikipedia.org/wiki/Enron) in October 2001.
 
-This report will explore a dataset containing Enron former employees' financial and email data. The main goal is to come up with a machine learning model able to efficiently classify the employees as a Person of Interest (POI) probably involved in the corruption mechanism. Different classification model will be trained and tested, checking their performances metrics, and, optimizing their hyperparameters.
+This report will explore a dataset containing Enron former employees' financial and email data. The main goal is to come up with a machine learning model able to efficiently classify the employees as a Person of Interest (POI) probably involved in the corruption mechanism. Different classification models will be trained and tested, checking their performances metrics, and, optimizing their hyperparameters.
 
 ### The Data
 
