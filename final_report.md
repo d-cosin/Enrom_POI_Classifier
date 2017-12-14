@@ -24,7 +24,7 @@ The target is the boolean column "poi". Each employee is classified as a POI (Tr
 
 ![POI Balance](figures/poi_balance.png)
 
-As shown in the previous plot, the "poi" target is highly sparse. Only 12% of the observations are labeled as POIs. This characteristic is important, given that it will influence the classification models evaluation metrics and in the hyperparameters as well.
+As shown in the previous plot, the "poi" target is highly sparse. Only 12% of the observations are labeled as POIs, totalizing 18 out of the 146 observations. This characteristic is important, given that it will influence the classification models evaluation metrics and the hyperparameters as well.
 
 #### Outliers
 
@@ -107,6 +107,12 @@ In summary, the classification model ideally should present decent precision and
 
 In order to obtain those metrics, the models were evaluated using StratifiedShuffleSplit with 1000 folds. During the GridSearchCV and RandomizedSearchCV stage, it was used the default evaluation strategy, StratifiedKFold with 3 folds.
 
+The machine learning models' evaluation is important, given that it helps to avoid typical problems such as high bias or high variance on the classifiers. Testing the model with different datapoint, also know as test data, instead of using the same train datapoint will detect if the machine learning is overfitted, performing well for the train data and poorly for the test data. In other words, the validation will inform how efficiently a machine learning model can generalize for different data. In this matter, the StratifiedShuffleSplit is a good solution as it provides a vast number of train and test sets even from small datasets, like the Enron dataset.
+
+### Feature Scaling
+
+The features were scaled used MinMaxScaler, because some models consistently perform better utilizing this approach, according to the "Tips on Practical Use" section on the [sklearn SVM documentation page](http://scikit-learn.org/stable/modules/svm.html).
+
 ### Baseline Model
 
 #### Using All Features as Input Space
@@ -150,7 +156,7 @@ The following plots show the performance comparison between the models for each 
 | ------------- |:-------------:|
 |![F1 Comparison all Features](figures/comparison_fs2.png)|
 
-Although the results were satisfactory, greater than the 0.3 threshold, it is important to tune the so-called models' hyperparameters because, this way, the models' performance may be potentialized for different parameters settings. Regarding this matter, the following section will tune the models' hyperparameters.
+Although the results were satisfactory, greater than the 0.3 threshold, it is important to tune the so-called models' hyperparameters because, this way, the models' out-of-box performance may be potentialized for different parameters settings. However, tuning too much the parameters may cause the model to have a high variance on the train and test data. Soon, little tuning may led to high bias and over tuning, to high variance. [This reference](https://dswalter.github.io/blog/overfitting-regularization-hyperparameters/) has a didactic explanation about this tuning trade-off. The following section will tune the models' hyperparameters. 
 
 The features list with the best result, using the feature set 2 as input space (third plot), were stored as the feature set 3. This set will be used in the following section during the hyperparameters optimization.
 
@@ -160,7 +166,7 @@ The features list with the best result, using the feature set 2 as input space (
 
 The four machine learning models were optimized using [GridSearchCV](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) and [RandomizedSearchCV](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html). The computationally expensive models Random Forest classifier and SVC were optimized through RandomizedSearchCV as this method is less exhaustive than the GridSearchCV. The remaining models Decision Tree classifier and Linear SVC were optimized using GridSearchCV. Bear in mind that, according to [this study](http://scikit-learn.org/stable/auto_examples/model_selection/plot_randomized_search.html), the performances utilizing both optimization methods are pretty similar.
 
-Each machine learning model was optimized for three different input spaces: all features, feature set 2 and feature set 3. The results are presented in the following section in plots and a table.
+Each machine learning model was optimized for three different input spaces: all features, feature set 2 and feature set 3. The results are presented in the following section in plots and a table. Also, for the feature set 2 and all features, the optimization methods tested for different PCA dimensionality reductions, varying from 1 principal component to 10 principal components. No K Best reduction was applied in these cases. For the feature set 3, neither PCA or K Best was applied, considering that the feature list defining feature set 3 was obtained during the test with different k values.
 
 #### Results
 
@@ -180,3 +186,9 @@ Each machine learning model was optimized for three different input spaces: all 
 ### The Chosen One
 
 The best performance was achieved with the SVC after the RandomizedSearchCV, as demonstrated in the previous section. Because of that, this model was chosen to solve the proposed problem of identifying POIs. The model was dumped through the scripts poi_id.py and tester.py in the pickle file "my_classifier.pkl", which holds the parameters defined for this classifier.
+
+The following table offers a brief of description of the best classifier.
+
+| Model     | Features List        | Scale      | Dimensionality Reductions     |
+| ------------- |:-------------:| -------:| -------:|
+| SVC       | Feature Set 2       | MinMaxScaler | PCA, 1 principal component |
