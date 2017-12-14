@@ -25,7 +25,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 sys.path.append("../tools/")
 from feature_format import featureFormat, targetFeatureSplit
-from tester  import dump_classifier_and_data, test_classifier
+from tester_custom  import dump_classifier_and_data, test_classifier
 from aux_functions import print_log_message, extract_df_features, \
     test_k_values, tune_hyper_parameters
 print_log_message("Libraries Initialized.")
