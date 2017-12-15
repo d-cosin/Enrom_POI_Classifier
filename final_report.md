@@ -156,7 +156,7 @@ The following plots show the performance comparison between the models for each 
 | ------------- |:-------------:|
 |![F1 Comparison all Features](figures/comparison_fs2.png)|
 
-Although the results were satisfactory, greater than the 0.3 threshold, it is important to tune the so-called models' hyperparameters because, this way, the models' out-of-box performance may be potentialized for different parameters settings. However, tuning too much the parameters may cause the model to have a high variance on the train and test data. Soon, little tuning may led to high bias and over tuning, to high variance. [This reference](https://dswalter.github.io/blog/overfitting-regularization-hyperparameters/) has a didactic explanation about this tuning trade-off. The following section will tune the models' hyperparameters. 
+Although the results were satisfactory, greater than the 0.3 threshold, it is important to tune the so-called models' hyperparameters because, this way, the models' out-of-box performance may be potentialized for different parameters settings. However, tuning too much the parameters may cause the model to have a high variance on the train and test data. Soon, little tuning may led to high bias and over tuning, to high variance. [This reference](https://dswalter.github.io/blog/overfitting-regularization-hyperparameters/) has a didactic explanation about this tuning trade-off. The following section will tune the models' hyperparameters.
 
 The features list with the best result, using the feature set 2 as input space (third plot), were stored as the feature set 3. This set will be used in the following section during the hyperparameters optimization.
 
@@ -167,6 +167,17 @@ The features list with the best result, using the feature set 2 as input space (
 The four machine learning models were optimized using [GridSearchCV](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) and [RandomizedSearchCV](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html). The computationally expensive models Random Forest classifier and SVC were optimized through RandomizedSearchCV as this method is less exhaustive than the GridSearchCV. The remaining models Decision Tree classifier and Linear SVC were optimized using GridSearchCV. Bear in mind that, according to [this study](http://scikit-learn.org/stable/auto_examples/model_selection/plot_randomized_search.html), the performances utilizing both optimization methods are pretty similar.
 
 Each machine learning model was optimized for three different input spaces: all features, feature set 2 and feature set 3. The results are presented in the following section in plots and a table. Also, for the feature set 2 and all features, the optimization methods tested for different PCA dimensionality reductions, varying from 1 principal component to 10 principal components. No K Best reduction was applied in these cases. For the feature set 3, neither PCA or K Best was applied, considering that the feature list defining feature set 3 was obtained during the test with different k values.
+
+#### Parameters Tuned
+
+The following table lists the parameters tuned for each model during the GridSearchCV or RandomizedSearchCV execution. In addition to these parameters, the number of principal components for the PCA algorithm was also tuned. The classifier with the best results and the respective parameters was stored in a pickle file.
+
+| Model     | Parameters Tuned        |
+| ------------- |:-------------:|
+| Decision Tree| max_depth, min_samples_split, min_samples-Leaf, min_impurity_split      
+| Linear SVC | penalty, C, class_weight |
+| Random Forest Classifier | n_estimators, bootstrap, class_weight, max_depth, min_samples_split, min_samples_leaf, min_impurity_split|
+| SVC | class_weight, C, kernel, gamma, coef0 |
 
 #### Results
 
