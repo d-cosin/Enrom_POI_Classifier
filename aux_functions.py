@@ -9,7 +9,7 @@ from sklearn.pipeline import Pipeline
 
 sys.path.append("../tools/")
 from feature_format import featureFormat, targetFeatureSplit
-from tester  import test_classifier
+from tester_custom  import test_classifier
 
 def print_log_message(message):
     showtime = strftime("%Y-%m-%d %H:%M:%S", gmtime())
