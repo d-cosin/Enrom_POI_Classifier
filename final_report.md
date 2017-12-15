@@ -170,7 +170,7 @@ Each machine learning model was optimized for three different input spaces: all 
 
 #### Parameters Tuned
 
-The following table lists the parameters tuned for each model during the GridSearchCV or RandomizedSearchCV execution. In addition to these parameters, the number of principal components for the PCA algorithm was also tuned. The classifier with the best results and the respective parameters was stored in a pickle file.
+The following table lists the parameters tuned for each model during the GridSearchCV or RandomizedSearchCV execution. In addition to these parameters, the number of principal components for the PCA algorithm was also tuned. The classifier with the best results and the respective parameters were stored in a pickle file.
 
 | Model     | Parameters Tuned        |
 | ------------- |:-------------:|
