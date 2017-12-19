@@ -131,123 +131,123 @@ plt.legend(("Precision", "Recall", "F1"))
 plt.grid(True)
 i += 1
 
-# # Test the Decision Tree varying K best values using all features
-# message = "baseline model with all features"
-# results_tree_all = test_k_values(df_train, clf_tree_base, message, my_dataset)
-#
-# # Test the Decision Tree varying K best values excluding sparse features
-# features_removed = [
-#     "loan_advances", "director_fees",
-#     "total_stock_value", "deferred_income", "deferral_payments"
-#     ]
-# message = "baseline model excluding sparse features"
-# results_tree_fs2 = test_k_values(
-#     df_train, clf_tree_base, message, my_dataset, features_removed
-#     )
-#
-# plt.figure(i)
-# plt.plot(
-#     results_tree_all["k_list"], results_tree_all["f1_list"], "-ro",
-#     results_tree_fs1["k_list"], results_tree_fs1["f1_list"], "-go",
-#     results_tree_fs2["k_list"], results_tree_fs2["f1_list"], '-bo'
-#     )
-# plt.title("Decision Tree Performance Varying Feature List with K Best")
-# plt.xlabel("K value")
-# plt.ylabel("Score")
-# plt.xticks(PLOTS_XTICKS)
-# plt.yticks(PLOTS_YTICKS)
-# plt.legend((
-#     "All features used", "Baseline model features", "Sparse features excluded"
-#     ))
-# plt.grid(True)
-# i += 1
-#
-# # Linear SVC varying K best values
-# estimators = [
-#     ("scale", MinMaxScaler()),
-#     ("clf", LinearSVC(random_state=42, class_weight="balanced"))
-#     ]
-# clf_linear = Pipeline(estimators)
-#
-# # Consider all features
-# message = "Linear SVC using all features"
-# results_linear_all = test_k_values(df_train, clf_linear, message, my_dataset)
-#
-# # Exclude sparse features and the correlated feature "total_stock_value"
-# message = "Linear SVC using feature set 1"
-# features_removed = ["loan_advances", "director_fees", "total_stock_value"]
-# results_linear_fs1 = test_k_values(
-#     df_train, clf_linear, message, my_dataset, features_removed
-#     )
-#
-# # Exclude all sparse features
-# message = "Linear SVC excluding highly sparse or correlated features"
-# features_removed = [
-#     "loan_advances", "director_fees",
-#     "total_stock_value", "deferred_income", "deferral_payments"
-#     ]
-# results_linear_fs2 = test_k_values(
-#     df_train, clf_linear, message, my_dataset, features_removed
-#     )
-#
-# plt.figure(i)
-# plt.plot(
-#     results_linear_all["k_list"], results_linear_all["f1_list"], "-ro",
-#     results_linear_fs1["k_list"], results_linear_fs1["f1_list"], "-go",
-#     results_linear_fs2["k_list"], results_linear_fs2["f1_list"], '-bo'
-#     )
-# plt.title("Linear SVC Performance Varying Feature List with K Best")
-# plt.xlabel("K value")
-# plt.ylabel("Score")
-# plt.xticks(PLOTS_XTICKS)
-# plt.yticks(PLOTS_YTICKS)
-# plt.legend((
-#     "All features used", "Feature set 1", "Sparse features excluded"
-#     ))
-# plt.grid(True)
-# i += 1
-#
-# # Random Forest varying K best values
-# estimators = [
-#     ("scale", MinMaxScaler()),
-#     ("clf", RandomForestClassifier(random_state=42, class_weight="balanced"))
-#     ]
-# clf_rforest = Pipeline(estimators)
-#
-# message = "Random Forest with all features"
-# results_rforest_all = test_k_values(df_train, clf_rforest, message, my_dataset)
-#
-# message = "Random Forest with features set 1"
-# features_removed = ["loan_advances", "director_fees", "total_stock_value"]
-# results_rforest_fs1 = test_k_values(
-#     df_train, clf_rforest, message, my_dataset, features_removed
-#     )
-#
-# message = "Random Forest excluding all sparse features"
-# features_removed = [
-#     "loan_advances", "director_fees",
-#     "total_stock_value", "deferred_income", "deferral_payments"
-#     ]
-# results_rforest_fs2 = test_k_values(
-#     df_train, clf_rforest, "Random Forest", my_dataset, features_removed
-#     )
-#
-# plt.figure(i)
-# plt.plot(
-#     results_rforest_all["k_list"], results_rforest_all["f1_list"], "-ro",
-#     results_rforest_fs1["k_list"], results_rforest_fs1["f1_list"], "-go",
-#     results_rforest_fs2["k_list"], results_rforest_fs2["f1_list"], '-bo'
-#     )
-# plt.title("Random Forest Performance Varying Feature List with K Best")
-# plt.xlabel("K value")
-# plt.ylabel("Score")
-# plt.xticks(PLOTS_XTICKS)
-# plt.yticks(PLOTS_YTICKS)
-# plt.legend((
-#     "All features used", "Feature set 1", "Sparse features excluded"
-#     ))
-# plt.grid(True)
-# i += 1
+# Test the Decision Tree varying K best values using all features
+message = "baseline model with all features"
+results_tree_all = test_k_values(df_train, clf_tree_base, message, my_dataset)
+
+# Test the Decision Tree varying K best values excluding sparse features
+features_removed = [
+    "loan_advances", "director_fees",
+    "total_stock_value", "deferred_income", "deferral_payments"
+    ]
+message = "baseline model excluding sparse features"
+results_tree_fs2 = test_k_values(
+    df_train, clf_tree_base, message, my_dataset, features_removed
+    )
+
+plt.figure(i)
+plt.plot(
+    results_tree_all["k_list"], results_tree_all["f1_list"], "-ro",
+    results_tree_fs1["k_list"], results_tree_fs1["f1_list"], "-go",
+    results_tree_fs2["k_list"], results_tree_fs2["f1_list"], '-bo'
+    )
+plt.title("Decision Tree Performance Varying Feature List with K Best")
+plt.xlabel("K value")
+plt.ylabel("Score")
+plt.xticks(PLOTS_XTICKS)
+plt.yticks(PLOTS_YTICKS)
+plt.legend((
+    "All features used", "Baseline model features", "Sparse features excluded"
+    ))
+plt.grid(True)
+i += 1
+
+# Linear SVC varying K best values
+estimators = [
+    ("scale", MinMaxScaler()),
+    ("clf", LinearSVC(random_state=42, class_weight="balanced"))
+    ]
+clf_linear = Pipeline(estimators)
+
+# Consider all features
+message = "Linear SVC using all features"
+results_linear_all = test_k_values(df_train, clf_linear, message, my_dataset)
+
+# Exclude sparse features and the correlated feature "total_stock_value"
+message = "Linear SVC using feature set 1"
+features_removed = ["loan_advances", "director_fees", "total_stock_value"]
+results_linear_fs1 = test_k_values(
+    df_train, clf_linear, message, my_dataset, features_removed
+    )
+
+# Exclude all sparse features
+message = "Linear SVC excluding highly sparse or correlated features"
+features_removed = [
+    "loan_advances", "director_fees",
+    "total_stock_value", "deferred_income", "deferral_payments"
+    ]
+results_linear_fs2 = test_k_values(
+    df_train, clf_linear, message, my_dataset, features_removed
+    )
+
+plt.figure(i)
+plt.plot(
+    results_linear_all["k_list"], results_linear_all["f1_list"], "-ro",
+    results_linear_fs1["k_list"], results_linear_fs1["f1_list"], "-go",
+    results_linear_fs2["k_list"], results_linear_fs2["f1_list"], '-bo'
+    )
+plt.title("Linear SVC Performance Varying Feature List with K Best")
+plt.xlabel("K value")
+plt.ylabel("Score")
+plt.xticks(PLOTS_XTICKS)
+plt.yticks(PLOTS_YTICKS)
+plt.legend((
+    "All features used", "Feature set 1", "Sparse features excluded"
+    ))
+plt.grid(True)
+i += 1
+
+# Random Forest varying K best values
+estimators = [
+    ("scale", MinMaxScaler()),
+    ("clf", RandomForestClassifier(random_state=42, class_weight="balanced"))
+    ]
+clf_rforest = Pipeline(estimators)
+
+message = "Random Forest with all features"
+results_rforest_all = test_k_values(df_train, clf_rforest, message, my_dataset)
+
+message = "Random Forest with features set 1"
+features_removed = ["loan_advances", "director_fees", "total_stock_value"]
+results_rforest_fs1 = test_k_values(
+    df_train, clf_rforest, message, my_dataset, features_removed
+    )
+
+message = "Random Forest excluding all sparse features"
+features_removed = [
+    "loan_advances", "director_fees",
+    "total_stock_value", "deferred_income", "deferral_payments"
+    ]
+results_rforest_fs2 = test_k_values(
+    df_train, clf_rforest, "Random Forest", my_dataset, features_removed
+    )
+
+plt.figure(i)
+plt.plot(
+    results_rforest_all["k_list"], results_rforest_all["f1_list"], "-ro",
+    results_rforest_fs1["k_list"], results_rforest_fs1["f1_list"], "-go",
+    results_rforest_fs2["k_list"], results_rforest_fs2["f1_list"], '-bo'
+    )
+plt.title("Random Forest Performance Varying Feature List with K Best")
+plt.xlabel("K value")
+plt.ylabel("Score")
+plt.xticks(PLOTS_XTICKS)
+plt.yticks(PLOTS_YTICKS)
+plt.legend((
+    "All features used", "Feature set 1", "Sparse features excluded"
+    ))
+plt.grid(True)
+i += 1
 
 # SVC varying K best values
 estimators = [
@@ -290,236 +290,236 @@ plt.legend((
 plt.grid(True)
 i += 1
 
-# # F1 score comparison between the models' performance
-# plt.figure(i)
-# plt.plot(
-#     results_tree_all["k_list"], results_tree_all["f1_list"], "-ro",
-#     results_linear_all["k_list"], results_linear_all["f1_list"], "-go",
-#     results_rforest_all["k_list"], results_rforest_all["f1_list"], '-bo',
-#     results_svc_all["k_list"], results_svc_all["f1_list"], '-ko'
-#     )
-# plt.title("Models' F1 Score Using all Features as the K Best Input")
-# plt.xlabel("K value")
-# plt.ylabel("Score")
-# plt.xticks(PLOTS_XTICKS)
-# plt.yticks(PLOTS_YTICKS)
-# plt.legend((
-#     "Decition tree", "Linear SVC", "Random Forest", "SVC"
-#     ))
-# plt.grid(True)
-# i += 1
-#
-# plt.figure(i)
-# plt.plot(
-#     results_tree_fs1["k_list"], results_tree_fs1["f1_list"], "-ro",
-#     results_linear_fs1["k_list"], results_linear_fs1["f1_list"], "-go",
-#     results_rforest_fs1["k_list"], results_rforest_fs1["f1_list"], '-bo',
-#     results_svc_fs1["k_list"], results_svc_fs1["f1_list"], '-ko'
-#     )
-# plt.title("Models' F1 Score Using Feature Set 1 as the K Best Input")
-# plt.xlabel("K value")
-# plt.ylabel("Score")
-# plt.xticks(PLOTS_XTICKS)
-# plt.yticks(PLOTS_YTICKS)
-# plt.legend((
-#     "Decition tree", "Linear SVC", "Random Forest", "SVC"
-#     ))
-# plt.grid(True)
-# i += 1
-#
-# plt.figure(i)
-# plt.plot(
-#     results_tree_fs2["k_list"], results_tree_fs2["f1_list"], "-ro",
-#     results_linear_fs2["k_list"], results_linear_fs2["f1_list"], "-go",
-#     results_rforest_fs2["k_list"], results_rforest_fs2["f1_list"], '-bo',
-#     results_svc_fs2["k_list"], results_svc_fs2["f1_list"], '-ko'
-#     )
-# plt.title("Models' F1 Score Using Feature Set 2 as the K Best Input")
-# plt.xlabel("K value")
-# plt.ylabel("Score")
-# plt.xticks(PLOTS_XTICKS)
-# plt.yticks(PLOTS_YTICKS)
-# plt.legend((
-#     "Decition tree", "Linear SVC", "Random Forest", "SVC"
-#     ))
-# plt.grid(True)
-# i += 1
-### Task 5: Tune your classifier to achieve better than .3 precision and recall
-### using our testing script. Check the tester.py script in the final project
-### folder for details on the evaluation method, especially the test_classifier
-### function. Because of the small size of the dataset, the script uses
-### stratified shuffle split cross validation. For more info:
-### http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.StratifiedShuffleSplit.html
+# F1 score comparison between the models' performance
+plt.figure(i)
+plt.plot(
+    results_tree_all["k_list"], results_tree_all["f1_list"], "-ro",
+    results_linear_all["k_list"], results_linear_all["f1_list"], "-go",
+    results_rforest_all["k_list"], results_rforest_all["f1_list"], '-bo',
+    results_svc_all["k_list"], results_svc_all["f1_list"], '-ko'
+    )
+plt.title("Models' F1 Score Using all Features as the K Best Input")
+plt.xlabel("K value")
+plt.ylabel("Score")
+plt.xticks(PLOTS_XTICKS)
+plt.yticks(PLOTS_YTICKS)
+plt.legend((
+    "Decition tree", "Linear SVC", "Random Forest", "SVC"
+    ))
+plt.grid(True)
+i += 1
 
-# Grid Search on the Decision Tree Classifier
-# clf = tree.DecisionTreeClassifier(random_state=42)
-# param_grid = dict(reduce_dim=[None, PCA(1), PCA(2), PCA(5), PCA(7), PCA(10)],
-#                   clf__max_depth=[None, 1, 5, 10, 100],
-#                   clf__min_samples_split=[2, 10, 50, 100],
-#                   clf__min_samples_leaf=[1, 10, 50, 100],
-#                   clf__min_impurity_split=[0.0, 0.5, 5.0, 10.0, 50.0, 100.0])
-#
-# # All features
-# print_log_message("Grid Search on Decision Tree all Features...")
-# features_list = extract_df_features(df_train)
-#
-# metrics_tree_optimized_all, clf_tree_optmized_all = tune_hyper_parameters(
-#     clf, param_grid, my_dataset, features_list, "grid search"
-#     )
-#
-# # Feature set 2
-# print_log_message("Grid Search on Decision Tree Feature Set 2...")
-#
-# features_removed = [
-#     "loan_advances", "director_fees",
-#     "total_stock_value", "deferred_income", "deferral_payments"
-#     ]
-# features_list = extract_df_features(df_train, features_removed)
-#
-# metrics_tree_optimized_fs2, clf_tree_optmized_fs2 = tune_hyper_parameters(
-#     clf, param_grid, my_dataset, features_list, "grid search"
-#     )
-#
-# # K features with best result (Feature Set 3)
-# print_log_message("Grid Search on Decision Tree K best features...")
-#
-# features_list = results_tree_fs2["best_features"]
-#
-# param_grid["reduce_dim"] = [None]
-# metrics_tree_optimized_fs3, clf_tree_optmized_fs3 = tune_hyper_parameters(
-#     clf, param_grid, my_dataset, features_list, "grid search"
-#     )
-#
-# # Bar plot comparing the f1 scores
-# f1_fs1 = metrics_tree_optimized_all[2]  # f1 score
-# f1_fs2 = metrics_tree_optimized_fs2[2]
-# f1_fs3 = metrics_tree_optimized_fs3[2]
-# ind = range(1,4)
-# plt.figure(i)
-# pfs1, pfs2, pfs3 = plt.bar(ind, [f1_fs1, f1_fs2, f1_fs3])
-# pfs1.set_facecolor('r')
-# pfs2.set_facecolor('g')
-# pfs3.set_facecolor('b')
-# plt.title("Decision Tree Perfomance after Optimization")
-# plt.xlabel("Input space for the optimization algorithm")
-# plt.ylabel("F1 score")
-# plt.xticks(ind, ("All fetures", "Feature Set 2", "Feature Set 3"))
-# plt.yticks(PLOTS_YTICKS)
-# i += 1
-#
-# # Grid Search on the Linear SVM Classifier
-# clf = LinearSVC(dual=False, random_state=42)
-# param_grid = dict(reduce_dim=[None, PCA(1), PCA(2), PCA(5), PCA(10)],
-#                   clf__penalty=["l1", "l2"],
-#                   clf__C=[0.1, 1, 10, 100, 1000],
-#                   clf__class_weight=[None, "balanced"])
-#
-# # All features
-# print_log_message("Grid Search on Linear SVC all Features...")
-# features_list = extract_df_features(df_train)
-#
-# metrics_linear_optimized_all, clf_linear_optmized_all = tune_hyper_parameters(
-#     clf, param_grid, my_dataset, features_list, "grid search"
-#     )
-#
-# # Feature set 2
-# print_log_message("Grid Search on Linear SVC Feature Set 2...")
-#
-# features_removed = [
-#     "loan_advances", "director_fees",
-#     "total_stock_value", "deferred_income", "deferral_payments"
-#     ]
-# features_list = extract_df_features(df_train, features_removed)
-#
-# metrics_linear_optimized_fs2, clf_linear_optmized_fs2 = tune_hyper_parameters(
-#     clf, param_grid, my_dataset, features_list, "grid search"
-#     )
-#
-# # K features with best result (Feature Set 3)
-# print_log_message("Grid Search on Linear SVC K best features...")
-#
-# features_list = results_linear_fs2["best_features"]
-#
-# param_grid["reduce_dim"] = [None]
-# metrics_linear_optimized_fs3, clf_linear_optmized_fs3 = tune_hyper_parameters(
-#     clf, param_grid, my_dataset, features_list, "grid search"
-#     )
-#
-# # Bar plot comparing the f1 scores
-# f1_fs1 = metrics_linear_optimized_all[2]  # f1 score
-# f1_fs2 = metrics_linear_optimized_fs2[2]
-# f1_fs3 = metrics_linear_optimized_fs3[2]
-# ind = range(1,4)
-# plt.figure(i)
-# pfs1, pfs2, pfs3 = plt.bar(ind, [f1_fs1, f1_fs2, f1_fs3])
-# pfs1.set_facecolor('r')
-# pfs2.set_facecolor('g')
-# pfs3.set_facecolor('b')
-# plt.title("Linear SVC Perfomance after Optimization")
-# plt.xlabel("Input space for the optimization algorithm")
-# plt.ylabel("F1 score")
-# plt.xticks(ind, ("All fetures", "Feature Set 2", "Feature Set 3"))
-# plt.yticks(PLOTS_YTICKS)
-# i += 1
-#
-# # Randomized Search on the Random Forest Classifier
-# clf = RandomForestClassifier(random_state=42)
-# param_distr = dict(reduce_dim=[None, PCA(1), PCA(5), PCA(10)],
-#                   clf__n_estimators=sp_randint(5,100),
-#                   clf__bootstrap= [True, False],
-#                   clf__class_weight=[None, "balanced"],
-#                   clf__max_depth=[None, 1, 5, 10, 100],
-#                   clf__min_samples_split=sp_randint(2, 100),
-#                   clf__min_samples_leaf=sp_randint(1, 100),
-#                   clf__min_impurity_split=[0.0, 0.5, 5.0, 10.0, 50.0, 100.0])
-#
-# # All features
-# print_log_message("Grid Search on Random Forest all Features...")
-# features_list = extract_df_features(df_train)
-#
-# metrics_rforest_optimized_all, clf_rforest_optmized_all = tune_hyper_parameters(
-#     clf, param_distr, my_dataset, features_list, "randomized search"
-#     )
-#
-# # Feature set 2
-# print_log_message("Grid Search on Random Forest Feature Set 2...")
-#
-# features_removed = [
-#     "loan_advances", "director_fees",
-#     "total_stock_value", "deferred_income", "deferral_payments"
-#     ]
-# features_list = extract_df_features(df_train, features_removed)
-#
-# metrics_rforest_optimized_fs2, clf_rforest_optmized_fs2 = tune_hyper_parameters(
-#     clf, param_distr, my_dataset, features_list, "randomized search"
-#     )
-#
-# # K features with best result (Feature Set 3)
-# print_log_message("Grid Search on Random Forest K best features...")
-#
-# features_list = results_rforest_fs2["best_features"]
-#
-# param_distr["reduce_dim"] = [None]
-# metrics_rforest_optimized_fs3, clf_rforest_optmized_fs3 = tune_hyper_parameters(
-#     clf, param_distr, my_dataset, features_list, "randomized search"
-#     )
-#
-# # Bar plot comparing the f1 scores
-# f1_fs1 = metrics_rforest_optimized_all[2]  # f1 score
-# f1_fs2 = metrics_rforest_optimized_fs2[2]
-# f1_fs3 = metrics_rforest_optimized_fs3[2]
-# ind = range(1,4)
-# plt.figure(i)
-# pfs1, pfs2, pfs3 = plt.bar(ind, [f1_fs1, f1_fs2, f1_fs3])
-# pfs1.set_facecolor('r')
-# pfs2.set_facecolor('g')
-# pfs3.set_facecolor('b')
-# plt.title("Random Forest Perfomance after Optimization")
-# plt.xlabel("Input space for the optimization algorithm")
-# plt.ylabel("F1 score")
-# plt.xticks(ind, ("All fetures", "Feature Set 2", "Feature Set 3"))
-# plt.yticks(PLOTS_YTICKS)
-# i += 1
+plt.figure(i)
+plt.plot(
+    results_tree_fs1["k_list"], results_tree_fs1["f1_list"], "-ro",
+    results_linear_fs1["k_list"], results_linear_fs1["f1_list"], "-go",
+    results_rforest_fs1["k_list"], results_rforest_fs1["f1_list"], '-bo',
+    results_svc_fs1["k_list"], results_svc_fs1["f1_list"], '-ko'
+    )
+plt.title("Models' F1 Score Using Feature Set 1 as the K Best Input")
+plt.xlabel("K value")
+plt.ylabel("Score")
+plt.xticks(PLOTS_XTICKS)
+plt.yticks(PLOTS_YTICKS)
+plt.legend((
+    "Decition tree", "Linear SVC", "Random Forest", "SVC"
+    ))
+plt.grid(True)
+i += 1
+
+plt.figure(i)
+plt.plot(
+    results_tree_fs2["k_list"], results_tree_fs2["f1_list"], "-ro",
+    results_linear_fs2["k_list"], results_linear_fs2["f1_list"], "-go",
+    results_rforest_fs2["k_list"], results_rforest_fs2["f1_list"], '-bo',
+    results_svc_fs2["k_list"], results_svc_fs2["f1_list"], '-ko'
+    )
+plt.title("Models' F1 Score Using Feature Set 2 as the K Best Input")
+plt.xlabel("K value")
+plt.ylabel("Score")
+plt.xticks(PLOTS_XTICKS)
+plt.yticks(PLOTS_YTICKS)
+plt.legend((
+    "Decition tree", "Linear SVC", "Random Forest", "SVC"
+    ))
+plt.grid(True)
+i += 1
+## Task 5: Tune your classifier to achieve better than .3 precision and recall
+## using our testing script. Check the tester.py script in the final project
+## folder for details on the evaluation method, especially the test_classifier
+## function. Because of the small size of the dataset, the script uses
+## stratified shuffle split cross validation. For more info:
+## http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.StratifiedShuffleSplit.html
+
+Grid Search on the Decision Tree Classifier
+clf = tree.DecisionTreeClassifier(random_state=42)
+param_grid = dict(reduce_dim=[None, PCA(1), PCA(2), PCA(5), PCA(7), PCA(10)],
+                  clf__max_depth=[None, 1, 5, 10, 100],
+                  clf__min_samples_split=[2, 10, 50, 100],
+                  clf__min_samples_leaf=[1, 10, 50, 100],
+                  clf__min_impurity_split=[0.0, 0.5, 5.0, 10.0, 50.0, 100.0])
+
+# All features
+print_log_message("Grid Search on Decision Tree all Features...")
+features_list = extract_df_features(df_train)
+
+metrics_tree_optimized_all, clf_tree_optmized_all = tune_hyper_parameters(
+    clf, param_grid, my_dataset, features_list, "grid search"
+    )
+
+# Feature set 2
+print_log_message("Grid Search on Decision Tree Feature Set 2...")
+
+features_removed = [
+    "loan_advances", "director_fees",
+    "total_stock_value", "deferred_income", "deferral_payments"
+    ]
+features_list = extract_df_features(df_train, features_removed)
+
+metrics_tree_optimized_fs2, clf_tree_optmized_fs2 = tune_hyper_parameters(
+    clf, param_grid, my_dataset, features_list, "grid search"
+    )
+
+# K features with best result (Feature Set 3)
+print_log_message("Grid Search on Decision Tree K best features...")
+
+features_list = results_tree_fs2["best_features"]
+
+param_grid["reduce_dim"] = [None]
+metrics_tree_optimized_fs3, clf_tree_optmized_fs3 = tune_hyper_parameters(
+    clf, param_grid, my_dataset, features_list, "grid search"
+    )
+
+# Bar plot comparing the f1 scores
+f1_fs1 = metrics_tree_optimized_all[2]  # f1 score
+f1_fs2 = metrics_tree_optimized_fs2[2]
+f1_fs3 = metrics_tree_optimized_fs3[2]
+ind = range(1,4)
+plt.figure(i)
+pfs1, pfs2, pfs3 = plt.bar(ind, [f1_fs1, f1_fs2, f1_fs3])
+pfs1.set_facecolor('r')
+pfs2.set_facecolor('g')
+pfs3.set_facecolor('b')
+plt.title("Decision Tree Perfomance after Optimization")
+plt.xlabel("Input space for the optimization algorithm")
+plt.ylabel("F1 score")
+plt.xticks(ind, ("All fetures", "Feature Set 2", "Feature Set 3"))
+plt.yticks(PLOTS_YTICKS)
+i += 1
+
+# Grid Search on the Linear SVM Classifier
+clf = LinearSVC(dual=False, random_state=42)
+param_grid = dict(reduce_dim=[None, PCA(1), PCA(2), PCA(5), PCA(10)],
+                  clf__penalty=["l1", "l2"],
+                  clf__C=[0.1, 1, 10, 100, 1000],
+                  clf__class_weight=[None, "balanced"])
+
+# All features
+print_log_message("Grid Search on Linear SVC all Features...")
+features_list = extract_df_features(df_train)
+
+metrics_linear_optimized_all, clf_linear_optmized_all = tune_hyper_parameters(
+    clf, param_grid, my_dataset, features_list, "grid search"
+    )
+
+# Feature set 2
+print_log_message("Grid Search on Linear SVC Feature Set 2...")
+
+features_removed = [
+    "loan_advances", "director_fees",
+    "total_stock_value", "deferred_income", "deferral_payments"
+    ]
+features_list = extract_df_features(df_train, features_removed)
+
+metrics_linear_optimized_fs2, clf_linear_optmized_fs2 = tune_hyper_parameters(
+    clf, param_grid, my_dataset, features_list, "grid search"
+    )
+
+# K features with best result (Feature Set 3)
+print_log_message("Grid Search on Linear SVC K best features...")
+
+features_list = results_linear_fs2["best_features"]
+
+param_grid["reduce_dim"] = [None]
+metrics_linear_optimized_fs3, clf_linear_optmized_fs3 = tune_hyper_parameters(
+    clf, param_grid, my_dataset, features_list, "grid search"
+    )
+
+# Bar plot comparing the f1 scores
+f1_fs1 = metrics_linear_optimized_all[2]  # f1 score
+f1_fs2 = metrics_linear_optimized_fs2[2]
+f1_fs3 = metrics_linear_optimized_fs3[2]
+ind = range(1,4)
+plt.figure(i)
+pfs1, pfs2, pfs3 = plt.bar(ind, [f1_fs1, f1_fs2, f1_fs3])
+pfs1.set_facecolor('r')
+pfs2.set_facecolor('g')
+pfs3.set_facecolor('b')
+plt.title("Linear SVC Perfomance after Optimization")
+plt.xlabel("Input space for the optimization algorithm")
+plt.ylabel("F1 score")
+plt.xticks(ind, ("All fetures", "Feature Set 2", "Feature Set 3"))
+plt.yticks(PLOTS_YTICKS)
+i += 1
+
+# Randomized Search on the Random Forest Classifier
+clf = RandomForestClassifier(random_state=42)
+param_distr = dict(reduce_dim=[None, PCA(1), PCA(5), PCA(10)],
+                  clf__n_estimators=sp_randint(5,100),
+                  clf__bootstrap= [True, False],
+                  clf__class_weight=[None, "balanced"],
+                  clf__max_depth=[None, 1, 5, 10, 100],
+                  clf__min_samples_split=sp_randint(2, 100),
+                  clf__min_samples_leaf=sp_randint(1, 100),
+                  clf__min_impurity_split=[0.0, 0.5, 5.0, 10.0, 50.0, 100.0])
+
+# All features
+print_log_message("Grid Search on Random Forest all Features...")
+features_list = extract_df_features(df_train)
+
+metrics_rforest_optimized_all, clf_rforest_optmized_all = tune_hyper_parameters(
+    clf, param_distr, my_dataset, features_list, "randomized search"
+    )
+
+# Feature set 2
+print_log_message("Grid Search on Random Forest Feature Set 2...")
+
+features_removed = [
+    "loan_advances", "director_fees",
+    "total_stock_value", "deferred_income", "deferral_payments"
+    ]
+features_list = extract_df_features(df_train, features_removed)
+
+metrics_rforest_optimized_fs2, clf_rforest_optmized_fs2 = tune_hyper_parameters(
+    clf, param_distr, my_dataset, features_list, "randomized search"
+    )
+
+# K features with best result (Feature Set 3)
+print_log_message("Grid Search on Random Forest K best features...")
+
+features_list = results_rforest_fs2["best_features"]
+
+param_distr["reduce_dim"] = [None]
+metrics_rforest_optimized_fs3, clf_rforest_optmized_fs3 = tune_hyper_parameters(
+    clf, param_distr, my_dataset, features_list, "randomized search"
+    )
+
+# Bar plot comparing the f1 scores
+f1_fs1 = metrics_rforest_optimized_all[2]  # f1 score
+f1_fs2 = metrics_rforest_optimized_fs2[2]
+f1_fs3 = metrics_rforest_optimized_fs3[2]
+ind = range(1,4)
+plt.figure(i)
+pfs1, pfs2, pfs3 = plt.bar(ind, [f1_fs1, f1_fs2, f1_fs3])
+pfs1.set_facecolor('r')
+pfs2.set_facecolor('g')
+pfs3.set_facecolor('b')
+plt.title("Random Forest Perfomance after Optimization")
+plt.xlabel("Input space for the optimization algorithm")
+plt.ylabel("F1 score")
+plt.xticks(ind, ("All fetures", "Feature Set 2", "Feature Set 3"))
+plt.yticks(PLOTS_YTICKS)
+i += 1
 
 # Randomized Search on the SVM Classifier
 clf = SVC(random_state=42)
