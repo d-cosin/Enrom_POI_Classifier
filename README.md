@@ -1,4 +1,4 @@
-# Enrom_POI_Classifier
+# Enron_POI_Classifier
 
 Repositary used for Udacity Data Analyst Nanodegree 5th Project: Identify Fraud from Enrom Email.
 
