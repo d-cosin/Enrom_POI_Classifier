@@ -2,7 +2,7 @@
 
 Repositary used for Udacity Data Analyst Nanodegree 5th Project: Identify Fraud from Enrom Email.
 
-The project explores a dataset containing Enron former employees' financial and email data. The main goal is to come up with a machine learning model able to efficiently classify the employees as a Person of Interest (POI) probably involved in corruption mechanisms. Different classifications model are trained and tested, checking their performances metrics, and, optimizing their hyperparameters.
+The project explores a dataset containing Enron former employees' financial and email data. The main goal is to come up with a machine learning model able to efficiently classify the employees as a Person of Interest (POI) probably involved in corruption mechanisms. Different classification models are trained and tested, checking their performances metrics, and, optimizing their hyperparameters.
 
 The repo is composed of:
 
